@@ -1,0 +1,461 @@
+Step 1: Header & Navbar (Flexbox)
+
+Built with <header> and <nav>.
+
+Uses display: flex, justify-content: space-between, and align-items: center to space out the logo, navigation links, and action button.
+
+Step 2: Hero Section (Grid & Flexbox)
+
+Uses CSS Grid (display: grid; grid-template-columns: 1fr 1fr;) on desktop to place text content on the left and the hero image on the right.
+
+Uses Flexbox (display: flex) for hero buttons and tag badges.
+
+Step 3 & 4: Features Section Cards (CSS Grid Layout)
+
+Uses CSS Grid (grid-template-columns: repeat(3, 1fr);) for 6 feature cards in a 3-column layout on desktop.
+
+Step 5: Internal Card Layout (Flexbox)
+
+Inside each card (.card), display: flex with flex-direction: column and margin-top: auto aligns the button/link neatly at the bottom regardless of text length.
+
+Step 6: Mobile Responsiveness (Single-Column)
+
+Included @media (max-width: 768px) breakpoint that changes Grid columns to grid-template-columns: 1fr and Stack Flex items into vertical columns (flex-direction: column).
+
+Step 7: Spacing & Alignment
+
+CSS variables for consistent padding, margins, gaps, typography, colors, and subtle box shadows.
+
+Code Files
+index.html
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 9.3 — Combine Flexbox and Grid</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- STEP 1: Header & Navigation Bar (Flexbox) -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#" class="logo">FlexGrid<span>App</span></a>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#cta" class="btn btn-primary nav-btn">Get Started</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- STEP 2: Hero Section (Grid Layout with Flexbox Elements) -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <span class="badge">Assignment 9.3</span>
+          <h1>Combine Flexbox & Grid Responsively</h1>
+          <p>A modern responsive landing page demonstrates seamless combination of CSS Grid for multi-column layouts and Flexbox for component alignment.</p>
+          <div class="hero-buttons">
+            <a href="#features" class="btn btn-primary">Explore Features</a>
+            <a href="#about" class="btn btn-secondary">Learn More</a>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <div class="hero-card-preview">
+            <div class="preview-badge">Flexbox + Grid</div>
+            <h3>Modern Responsive Architecture</h3>
+            <p>Resize your browser window to see multi-column layouts transform into a responsive single-column mobile view.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3, 4 & 5: Features Section (Grid Main Layout + Flexbox Card Content) -->
+    <section id="features" class="features-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Key Features</h2>
+          <p>Powered by CSS Grid for overall structure and Flexbox for fine-grained component alignment.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Card 1 -->
+          <article class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Fast Performance</h3>
+            <p>Optimized CSS rendering without extra JavaScript overhead or external framework bloat.</p>
+            <a href="#" class="card-link">Read More &rarr;</a>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card">
+            <div class="card-icon">📱</div>
+            <h3>Responsive Design</h3>
+            <p>Seamless adaptability across desktop, tablet, and mobile devices using modern media queries.</p>
+            <a href="#" class="card-link">Read More &rarr;</a>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card">
+            <div class="card-icon">🎨</div>
+            <h3>Clean Code Base</h3>
+            <p>Structured HTML5 semantics combined with CSS variables for flexible and maintainable styling.</p>
+            <a href="#" class="card-link">Read More &rarr;</a>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="card">
+            <div class="card-icon">📐</div>
+            <h3>CSS Grid Layout</h3>
+            <p>Handles main page grid structures, card galleries, and multi-column desktop arrangements.</p>
+            <a href="#" class="card-link">Read More &rarr;</a>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="card">
+            <div class="card-icon">🧩</div>
+            <h3>Flexbox Alignment</h3>
+            <p>Manages navigation bars, button groups, and internal vertical stack alignment in UI cards.</p>
+            <a href="#" class="card-link">Read More &rarr;</a>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="card">
+            <div class="card-icon">🔒</div>
+            <h3>Best Practices</h3>
+            <p>Adheres strictly to modern web standard specifications, accessibility, and modular design.</p>
+            <a href="#" class="card-link">Read More &rarr;</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-flex">
+      <p>&copy; 2026 FlexGridApp. Assignment 9.3 Submission.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+styles.css
+CSS
+/* ==========================================================================
+   CSS Variables & Base Reset
+   ========================================================================== */
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --radius: 12px;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   STEP 1: Header & Navigation (FLEXBOX)
+   ========================================================================== */
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex; /* Flexbox Requirement */
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  text-decoration: none;
+}
+
+.logo span {
+  color: var(--primary-color);
+}
+
+.nav-links {
+  display: flex; /* Flexbox Requirement */
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: #e2e8f0;
+  color: var(--text-dark);
+}
+
+.btn-secondary:hover {
+  background-color: #cbd5e1;
+}
+
+/* ==========================================================================
+   STEP 2: Hero Section (GRID LAYOUT + FLEXBOX CONTENT)
+   ========================================================================== */
+.hero-section {
+  padding: 4rem 0;
+}
+
+.hero-grid {
+  display: grid; /* Grid Requirement */
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #dbeafe;
+  color: var(--primary-color);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-buttons {
+  display: flex; /* Flexbox Alignment */
+  gap: 1rem;
+}
+
+.hero-image-wrapper {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  color: white;
+  box-shadow: var(--shadow);
+}
+
+.hero-card-preview {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.preview-badge {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   STEP 3, 4 & 5: Features Section (GRID + FLEXBOX CARDS)
+   ========================================================================== */
+.features-section {
+  padding: 4rem 0;
+  background-color: #ffffff;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-title p {
+  color: var(--text-muted);
+}
+
+/* Step 4: CSS Grid for Main Section */
+.features-grid {
+  display: grid; /* Grid Requirement */
+  grid-template-columns: repeat(3, 1fr); /* 3 Columns on desktop */
+  gap: 2rem;
+}
+
+/* Step 5: Flexbox inside cards */
+.card {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  
+  display: flex; /* Flexbox inside Card Requirement */
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-link {
+  margin-top: auto; /* Flexbox alignment trick to push link to card bottom */
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Footer (FLEXBOX)
+   ========================================================================== */
+.footer {
+  border-top: 1px solid var(--border-color);
+  padding: 2rem 0;
+  background-color: #ffffff;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-flex {
+  display: flex; /* Flexbox Requirement */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   STEP 6: Responsive Mobile View (Single-Column)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Step 6: Convert Navbar to flex vertical column on mobile */
+  .nav-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  /* Step 6: Convert Grid layout to 1 column on mobile */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Step 6: Convert 3-column feature grid to 1 column on mobile */
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .footer-flex {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
